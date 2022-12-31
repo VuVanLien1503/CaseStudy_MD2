@@ -2,7 +2,9 @@ package model;
 
 import manager.ManagerShoe;
 
-public class Customer {
+import java.io.Serializable;
+
+public class Customer implements Serializable {
     private  int id;
     private String name;
     private int age;

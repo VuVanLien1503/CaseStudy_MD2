@@ -9,11 +9,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class ManagerCustomer implements ICrud<Customer> {
-    String patternEmail = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
-            + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
-    String patternName = "^[a-zA-Z]{1}[a-z0-9_-]{3,15}$";
-    String patternPhone = "^[0][0-9]{9}$";
-    String patternPassWord = "^[a-zA-Z0-9]{4,15}$";
+    MyRegex myRegex=new MyRegex();
     Scanner scanner = new Scanner(System.in);
     private int autoId;
     public ArrayList<Customer> listCustomer;
@@ -32,6 +28,10 @@ public class ManagerCustomer implements ICrud<Customer> {
         return listCustomer;
     }
 
+    public void setListCustomer(ArrayList<Customer> listCustomer) {
+        this.listCustomer = listCustomer;
+    }
+
     public String[] login(Scanner scanner) {
         System.out.println("\n                              WElCOME TO LOGIN : \n");
         boolean check = false;
@@ -40,7 +40,7 @@ public class ManagerCustomer implements ICrud<Customer> {
         System.out.print("Enter Email : ");
         do {
             inputEmail = scanner.nextLine();
-            if (regex(inputEmail, patternEmail)) {
+            if (myRegex.regex(inputEmail, myRegex.getPatternEmail())) {
                 check = true;
             } else {
                 System.err.print("Email format is incorrect\nPlease re-enter : ");
@@ -98,12 +98,6 @@ public class ManagerCustomer implements ICrud<Customer> {
         return customer;
     }
 
-    public  boolean regex(String input, String pattern) {
-        return Pattern.compile(pattern)
-                .matcher(input)
-                .matches();
-    }
-
     public void title() {
         System.out.printf("%-5s%-10s%-10s%-10s%-10s%-10s%-10s%-15s%s",
                 "ID", "NAME", "AGE", "ADDRESS", "PHONE", "EMAIL", "PASSWORD", "CART", "HISTORY\n");
@@ -130,7 +124,7 @@ public class ManagerCustomer implements ICrud<Customer> {
         do {
             System.out.print("Enter Name : ");
             name = scanner.nextLine();
-            if (regex(name, patternName)) {
+            if (myRegex.regex(name,myRegex.getPatternName())) {
                 check = true;
             } else {
                 System.err.println("Malformed Name");
@@ -142,7 +136,7 @@ public class ManagerCustomer implements ICrud<Customer> {
         System.out.print("Enter Email : ");
         do {
             email = scanner.nextLine();
-            if (regex(email, patternEmail)) {
+            if (myRegex.regex(email, myRegex.getPatternEmail())) {
                 check = true;
             } else {
                 System.err.println("Malformed Email");
@@ -154,7 +148,7 @@ public class ManagerCustomer implements ICrud<Customer> {
         do {
             System.out.print("Enter PassWord : ");
             passWord = scanner.nextLine();
-            if (regex(passWord, patternPassWord)) {
+            if (myRegex.regex(passWord, myRegex.getPatternPassWord())) {
                 check = true;
             } else {
                 System.err.println("Malformed PassWord");
