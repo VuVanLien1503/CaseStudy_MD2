@@ -1,11 +1,13 @@
 package main;
 
 import manager.ManagerCustomer;
+import manager.ManagerShoe;
 import model.Customer;
 
 import java.util.Scanner;
 
 public class Main {
+    static ManagerShoe managerProduct=new ManagerShoe();
     static ManagerCustomer managerCustomer = new ManagerCustomer();
     static Scanner scanner = new Scanner(System.in);
     static String patternChoice = "^[0-2]{1}$";

@@ -9,16 +9,14 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class ManagerCustomer implements ICrud<Customer> {
-    private int autoId;
-
     String patternEmail = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
             + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
     String patternName = "^[a-zA-Z]{1}[a-z0-9_-]{3,15}$";
     String patternPhone = "^[0][0-9]{9}$";
     String patternPassWord = "^[a-zA-Z0-9]{4,15}$";
-
-    public ArrayList<Customer> listCustomer;
     Scanner scanner = new Scanner(System.in);
+    private int autoId;
+    public ArrayList<Customer> listCustomer;
 
     public ManagerCustomer() {
         listCustomer = new ArrayList<>();

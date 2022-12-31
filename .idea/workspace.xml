@@ -5,17 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e80e1736-7fa2-4796-b1b5-1011801cd118" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CaseMD2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Interface/ICrud.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/manager/ManagerCustomer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/manager/ManagerProduct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/manager/ManagerCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/manager/ManagerTrademark.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Shoe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Trademark.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/ManagerCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/ManagerCustomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/ManagerProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/ManagerShoe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Customer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -46,6 +46,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "D:/CodeGym/MD2/CaseMD2",
     "node.js.detected.package.eslint": "true",
@@ -83,7 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1672368937690</updated>
       <workItem from="1672368939102" duration="3818000" />
-      <workItem from="1672455400747" duration="22052000" />
+      <workItem from="1672455400747" duration="25450000" />
     </task>
     <servers />
   </component>
@@ -108,16 +109,6 @@
           <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/Main.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/Main.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

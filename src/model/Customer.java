@@ -1,7 +1,6 @@
 package model;
 
-import manager.ManagerCustomer;
-import manager.ManagerProduct;
+import manager.ManagerShoe;
 
 public class Customer {
     private  int id;
@@ -11,8 +10,8 @@ public class Customer {
     private String phone;
     private String email;
     private String passWord;
-    private ManagerProduct cart;
-    private ManagerProduct history;
+    private ManagerShoe cart;
+    private ManagerShoe history;
 
     public Customer() {
     }
@@ -28,7 +27,7 @@ public class Customer {
         this.history=null;
     }
 
-    public Customer(int id, String name, int age, String address, String phone, String email, String passWord, ManagerProduct cart, ManagerProduct history) {
+    public Customer(int id, String name, int age, String address, String phone, String email, String passWord, ManagerShoe cart, ManagerShoe history) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -96,19 +95,19 @@ public class Customer {
         this.passWord = passWord;
     }
 
-    public ManagerProduct getCart() {
+    public ManagerShoe getCart() {
         return cart;
     }
 
-    public void setCart(ManagerProduct cart) {
+    public void setCart(ManagerShoe cart) {
         this.cart = cart;
     }
 
-    public ManagerProduct getHistory() {
+    public ManagerShoe getHistory() {
         return history;
     }
 
-    public void setHistory(ManagerProduct history) {
+    public void setHistory(ManagerShoe history) {
         this.history = history;
     }
 
