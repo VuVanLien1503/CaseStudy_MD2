@@ -12,7 +12,10 @@ import java.util.Scanner;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static String patternChoice = "^[0-2]{1}$";
-    static String path="src\\file\\customer";
+    static String pathCustomer ="src\\file\\customer";
+    static String pathShoe ="src\\file\\shoe";
+    static String pathCategory ="src\\file\\category";
+    static String pathTradeMark ="src\\file\\trademark";
 
 
     static MyRegex myRegex=new MyRegex();
@@ -21,7 +24,7 @@ public class Main {
     static MyFileBinary myFileBinary=new MyFileBinary();
 
     public static void main(String[] args) {
-       managerCustomer.setListCustomer((ArrayList<Customer>) myFileBinary.inputStream(path));
+       managerCustomer.setListCustomer((ArrayList<Customer>) myFileBinary.inputStream(pathCustomer));
         registerLogin(scanner);
 
     }
@@ -53,7 +56,7 @@ public class Main {
                 case 2:
                     Customer customer=managerCustomer.create(scanner);
                     managerCustomer.add(customer);
-                    myFileBinary.outPutStream(path,managerCustomer.listCustomer);
+                    myFileBinary.outPutStream(pathCustomer,managerCustomer.listCustomer);
                     break;
             }
         } while (choiceInt != 0);
