@@ -1,18 +1,15 @@
 package manager;
 
+import Interface.ICrud;
+import model.Customer;
 import model.Trademark;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ManagerTrademark {
-    String patternEmail = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
-            + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
-    String patternName = "^[a-zA-Z]{1}[a-z0-9_-]{3,15}$";
-    String patternPhone = "^[0][0-9]{9}$";
-    String patternPassWord = "^[a-zA-Z0-9]{4,15}$";
+public class ManagerTrademark implements ICrud<Trademark> {
     Scanner scanner = new Scanner(System.in);
-
+    MyRegex myRegex=new MyRegex();
     private int autoId;
     private ArrayList<Trademark>listTrademark;
 
@@ -31,5 +28,68 @@ public class ManagerTrademark {
 
     public void setListTrademark(ArrayList<Trademark> listTrademark) {
         this.listTrademark = listTrademark;
+    }
+    public void title() {
+        System.out.printf("%-15s%s",
+                "ID", "NAME\n");
+        System.out.println("-----------------");
+    }
+    @Override
+    public Trademark findById(Scanner scanner) {
+        Trademark trademark = null;
+        int id;
+        boolean checkRegex=false;
+        do {
+            System.out.println("Enter Id : ");
+            id=Integer.parseInt(scanner.nextLine());
+            if (myRegex.regex(String.valueOf(id), myRegex.getPatternNumber())){
+                checkRegex=true;
+            }else {
+                System.err.println("Malformed ID");
+                System.out.println("\nId Contains Only Numbers\n");
+            }
+        }while (!checkRegex);
+        for (Trademark t :
+                listTrademark) {
+            if (t.getId()==id){
+                trademark=t;
+                break;
+            }
+        }
+        return trademark;
+    }
+    @Override
+    public void display() {
+        title();
+        for (Trademark tradeMark : listTrademark) {
+            tradeMark.display();
+        }
+    }
+
+    @Override
+    public Trademark create(Scanner scanner) {
+        boolean check=false;
+        String name;
+        System.out.println("\nCreate New TradeMark\n");
+        System.out.println("TradeMark : (3-15) characters without special characters but accept \"-\";\"_\"");
+        do {
+            System.out.print("Enter Name : ");
+            name=scanner.nextLine();
+            if (myRegex.regex(name,myRegex.getPatternName())){
+                check=true;
+            }else {
+                System.err.println("Malformed Name");
+                System.out.println("\nTradeMark : (3-15) characters without special characters but accept \"-\";\"_\"");
+                check = false;
+            }
+        }while (!check);
+        Trademark trademark;
+        trademark=new Trademark(autoId,name);
+        return trademark;
+    }
+
+    @Override
+    public void add(Trademark trademark) {
+        listTrademark.add(trademark);
     }
 }

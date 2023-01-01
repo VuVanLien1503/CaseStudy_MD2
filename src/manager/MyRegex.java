@@ -8,6 +8,7 @@ public class MyRegex {
     private String patternName = "^[a-zA-Z]{1}[a-z0-9_-]{3,15}$";
     private String patternPhone = "^[0][0-9]{9}$";
     private String patternPassWord = "^[a-zA-Z0-9]{4,15}$";
+    private String patternNumber="[0-9]$";
 
     public MyRegex() {
     }
@@ -49,6 +50,14 @@ public class MyRegex {
 
     public void setPatternPassWord(String patternPassWord) {
         this.patternPassWord = patternPassWord;
+    }
+
+    public String getPatternNumber() {
+        return patternNumber;
+    }
+
+    public void setPatternNumber(String patternNumber) {
+        this.patternNumber = patternNumber;
     }
 
     public  boolean regex(String input, String pattern) {

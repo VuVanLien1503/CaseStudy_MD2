@@ -1,9 +1,6 @@
 package main;
 
-import manager.ManagerCustomer;
-import manager.ManagerShoe;
-import manager.MyFileBinary;
-import manager.MyRegex;
+import manager.*;
 import model.Customer;
 
 import java.util.ArrayList;
@@ -19,8 +16,12 @@ public class Main {
 
 
     static MyRegex myRegex=new MyRegex();
-    static ManagerShoe managerProduct=new ManagerShoe();
-    static ManagerCustomer managerCustomer = new ManagerCustomer();
+    static ManagerTrademark managerTrademark=new ManagerTrademark();
+    static ManagerCategory managerCategory=new ManagerCategory();
+    static ManagerShoe managerShoe=new ManagerShoe(managerCategory,managerTrademark);
+    static ManagerCustomer managerCustomer = new ManagerCustomer(managerShoe);
+
+
     static MyFileBinary myFileBinary=new MyFileBinary();
 
     public static void main(String[] args) {

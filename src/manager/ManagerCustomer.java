@@ -12,15 +12,17 @@ public class ManagerCustomer implements ICrud<Customer> {
     MyRegex myRegex=new MyRegex();
     Scanner scanner = new Scanner(System.in);
     private int autoId;
+    ManagerShoe managerShoe;
     public ArrayList<Customer> listCustomer;
 
-    public ManagerCustomer() {
+    public ManagerCustomer(ManagerShoe managerShoe) {
         listCustomer = new ArrayList<>();
         if (listCustomer.size() > 0) {
             autoId = (listCustomer.get(listCustomer.size() - 1).getId()) + 1;
         } else {
             autoId = 1;
         }
+        this.managerShoe=managerShoe;
 
     }
 
@@ -102,6 +104,33 @@ public class ManagerCustomer implements ICrud<Customer> {
         System.out.printf("%-5s%-10s%-10s%-10s%-10s%-10s%-10s%-15s%s",
                 "ID", "NAME", "AGE", "ADDRESS", "PHONE", "EMAIL", "PASSWORD", "CART", "HISTORY\n");
         System.out.println("-------------------------------------------------------------------------------------------");
+    }
+
+    @Override
+    public Customer findById(Scanner scanner) {
+        Customer customer = null;
+        int id;
+        boolean checkRegex=false;
+        boolean checkId=false;
+        do {
+            System.out.println("Enter Id : ");
+             id=Integer.parseInt(scanner.nextLine());
+            if (myRegex.regex(String.valueOf(id), myRegex.getPatternNumber())){
+                checkRegex=true;
+            }else {
+                System.err.println("Malformed ID");
+                System.out.println("\nId Contains Only Numbers\n");
+            }
+        }while (!checkRegex);
+        for (Customer c :
+                listCustomer) {
+            if (c.getId()==id){
+                customer=c;
+                checkId=true;
+                break;
+            }
+        }
+        return customer;
     }
 
     @Override
