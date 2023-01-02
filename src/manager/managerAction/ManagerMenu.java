@@ -1,4 +1,4 @@
-package main;
+package manager.managerAction;
 
 import manager.*;
 import model.Customer;
@@ -6,7 +6,7 @@ import model.Customer;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Menu {
+public class ManagerMenu {
      Scanner scanner = new Scanner(System.in);
      String patternChoice = "^[0-2]{1}$";
      String pathCustomer = "src\\file\\customer";
@@ -20,7 +20,7 @@ public class Menu {
     ManagerLogin login=new ManagerLogin(managerCustomer);
 
 
-    public Menu(ManagerCustomer managerCustomer, ManagerShoe managerShoe) {
+    public ManagerMenu(ManagerCustomer managerCustomer, ManagerShoe managerShoe) {
         managerCustomer.setListCustomer((ArrayList<Customer>) myFileBinary.inputStream(pathCustomer));
         this.managerCustomer = managerCustomer;
         this.managerShoe = managerShoe;

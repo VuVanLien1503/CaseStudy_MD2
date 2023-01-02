@@ -1,12 +1,11 @@
 package manager;
 
 import Interface.ICrud;
+import manager.managerAction.MyRegex;
 import model.Customer;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class ManagerCustomer implements ICrud<Customer> {
     MyRegex myRegex=new MyRegex();

@@ -1,6 +1,4 @@
-package manager;
-
-import model.Category;
+package manager.managerAction;
 
 import java.io.*;
 import java.util.ArrayList;

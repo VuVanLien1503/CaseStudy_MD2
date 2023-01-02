@@ -1,5 +1,6 @@
-package manager;
+package manager.managerAction;
 
+import manager.ManagerCustomer;
 import model.Customer;
 
 import java.util.List;

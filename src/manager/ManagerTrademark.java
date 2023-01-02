@@ -1,7 +1,7 @@
 package manager;
 
 import Interface.ICrud;
-import model.Customer;
+import manager.managerAction.MyRegex;
 import model.Trademark;
 
 import java.util.ArrayList;

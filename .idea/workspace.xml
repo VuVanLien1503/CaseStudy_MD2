@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e80e1736-7fa2-4796-b1b5-1011801cd118" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/ManagerLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/ManagerLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerAction/ManagerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/ManagerCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/ManagerCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/ManagerCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/ManagerCustomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/ManagerLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerAction/ManagerLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/ManagerShoe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/ManagerShoe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/ManagerTrademark.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/ManagerTrademark.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/MyFileBinary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerAction/MyFileBinary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/MyRegex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerAction/MyRegex.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +59,7 @@
       <module name="CaseMD2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="main.*" />
+          <option name="PATTERN" value="manager.managerAction.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -79,7 +84,7 @@
       <workItem from="1672368939102" duration="3818000" />
       <workItem from="1672455400747" duration="41026000" />
       <workItem from="1672556567244" duration="36000" />
-      <workItem from="1672644031653" duration="12871000" />
+      <workItem from="1672644031653" duration="13695000" />
     </task>
     <servers />
   </component>
@@ -105,13 +110,13 @@
           <option name="timeStamp" value="1" />
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/manager/ManagerLogin.java</url>
-          <line>65</line>
+          <url>file://$PROJECT_DIR$/src/manager/managerAction/ManagerLogin.java</url>
+          <line>66</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/manager/ManagerLogin.java</url>
-          <line>81</line>
+          <url>file://$PROJECT_DIR$/src/manager/managerAction/ManagerLogin.java</url>
+          <line>82</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

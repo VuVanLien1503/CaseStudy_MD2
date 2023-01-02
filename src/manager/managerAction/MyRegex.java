@@ -1,4 +1,4 @@
-package manager;
+package manager.managerAction;
 
 import java.util.regex.Pattern;
 
