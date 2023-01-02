@@ -1,6 +1,6 @@
 package model;
 
-import manager.ManagerShoe;
+import manager.managerModel.ManagerShoe;
 
 import java.io.Serializable;
 

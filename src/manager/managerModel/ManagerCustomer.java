@@ -1,4 +1,4 @@
-package manager;
+package manager.managerModel;
 
 import Interface.ICrud;
 import manager.managerAction.MyRegex;
