@@ -20,6 +20,7 @@ public class Main {
     static ManagerCategory managerCategory=new ManagerCategory();
     static ManagerShoe managerShoe=new ManagerShoe(managerCategory,managerTrademark);
     static ManagerCustomer managerCustomer = new ManagerCustomer(managerShoe);
+    static ManagerLogin login=new ManagerLogin(managerCustomer);
 
 
     static MyFileBinary myFileBinary=new MyFileBinary();
@@ -38,7 +39,7 @@ public class Main {
             System.out.println("\n1. Login");
             System.out.println("\n2. Register");
             System.out.println("\n----------------");
-            System.out.println("\n0. Exit :\n");
+            System.out.println("0. Exit :");
             System.out.println("\nEnter Choice : (0->2)");
             do {
                 choice = scanner.nextLine();
@@ -52,7 +53,7 @@ public class Main {
 
             switch (choiceInt) {
                 case 1:
-                    managerCustomer.checkLogin(managerCustomer.listCustomer,scanner);
+                    login.checkLogin(managerCustomer.listCustomer,scanner);
                     break;
                 case 2:
                     Customer customer=managerCustomer.create(scanner);
