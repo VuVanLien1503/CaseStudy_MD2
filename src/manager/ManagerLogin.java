@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ManagerLogin {
-    MyRegex myRegex=new MyRegex();
+    private String admin = "admin@gmail.com";
+    MyRegex myRegex = new MyRegex();
     ManagerCustomer managerCustomer;
 
     public ManagerCustomer getManagerCustomer() {
@@ -20,6 +21,7 @@ public class ManagerLogin {
     public ManagerLogin(ManagerCustomer managerCustomer) {
         this.managerCustomer = managerCustomer;
     }
+
     public String[] login(Scanner scanner) {
         System.out.println("\n                              WElCOME TO LOGIN : \n");
         boolean check = false;
@@ -38,13 +40,20 @@ public class ManagerLogin {
         inputPassWord = scanner.nextLine();
         return new String[]{inputEmail, inputPassWord};
     }
-    public boolean isAdmin(Customer customer, String admin){
-        boolean checkAdmin=false;
-        if (customer.getEmail().toLowerCase().equals(admin)){
-            checkAdmin=true;
+
+    public boolean isAdmin(Customer customer) {
+        boolean checkAdmin = false;
+        try {
+            if (customer.getEmail().toLowerCase().equals(admin)) {
+                checkAdmin = true;
+            }
+        } catch (NullPointerException e) {
+            checkAdmin = false;
         }
+
         return checkAdmin;
     }
+
     public Customer checkLogin(List<Customer> listCustomer, Scanner scanner) {
         String[] login = login(scanner);
         Customer customer = null;
@@ -53,7 +62,7 @@ public class ManagerLogin {
         for (Customer c : listCustomer) {
             if (c.getEmail().equals(login[0])) {
                 if (c.getPassWord().equals(login[1])) {
-                    outPut = "Logged in successfully...!\nWelcome Back " + c.getName() + " ....!";
+                    outPut = "                    Welcome Back " + c.getName() + " ....!";
                     System.out.println(outPut);
                     customer = c;
                     check = true;
@@ -69,7 +78,7 @@ public class ManagerLogin {
                         login[1] = scanner.nextLine();
                         System.out.println("------------------------");
                         if (c.getPassWord().equals(login[1])) {
-                            outPut = "Logged in successfully...!\nWelcome Back " + c.getName() + " ....!";
+                            outPut = "                    Welcome Back " + c.getName() + " ....!";
                             System.out.println(outPut);
                             check = true;
                             return c;
