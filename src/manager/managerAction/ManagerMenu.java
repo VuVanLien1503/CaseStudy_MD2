@@ -1,6 +1,7 @@
 package manager.managerAction;
 
-import manager.*;
+import manager.managerModel.ManagerCustomer;
+import manager.managerModel.ManagerShoe;
 import model.Customer;
 
 import java.util.ArrayList;

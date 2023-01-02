@@ -6,14 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="e80e1736-7fa2-4796-b1b5-1011801cd118" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerAction/ManagerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/ManagerCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/ManagerCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/ManagerCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/ManagerCustomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/ManagerLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerAction/ManagerLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/ManagerShoe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/ManagerShoe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/ManagerTrademark.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/ManagerTrademark.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/MyFileBinary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerAction/MyFileBinary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/MyRegex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerAction/MyRegex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/ManagerCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerModel/ManagerCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/ManagerCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerModel/ManagerCustomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/ManagerShoe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerModel/ManagerShoe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/ManagerTrademark.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerModel/ManagerTrademark.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/managerAction/ManagerLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerAction/ManagerLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/managerAction/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerAction/ManagerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Customer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +83,7 @@
       <workItem from="1672368939102" duration="3818000" />
       <workItem from="1672455400747" duration="41026000" />
       <workItem from="1672556567244" duration="36000" />
-      <workItem from="1672644031653" duration="13695000" />
+      <workItem from="1672644031653" duration="14005000" />
     </task>
     <servers />
   </component>

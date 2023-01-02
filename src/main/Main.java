@@ -1,9 +1,9 @@
 package main;
 
-import manager.ManagerCategory;
-import manager.ManagerCustomer;
-import manager.ManagerShoe;
-import manager.ManagerTrademark;
+import manager.managerModel.ManagerCategory;
+import manager.managerModel.ManagerCustomer;
+import manager.managerModel.ManagerShoe;
+import manager.managerModel.ManagerTrademark;
 import manager.managerAction.ManagerMenu;
 
 import java.util.Scanner;
