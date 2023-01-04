@@ -5,14 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e80e1736-7fa2-4796-b1b5-1011801cd118" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Interface/ISearch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interface/ISort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interface/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/manager/managerModel/AC/ManagerProduct.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/manager/managerModel/properties/ManagerRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/AC/HandBag.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/ACproperties/ACSon/TradeMarkHandBag.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/ACproperties/ACSon/TradeMarkShoe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/ACproperties/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/ICrud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/ICrud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/file/customer" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/ManagerCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerModel/ManagerCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/ManagerCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerModel/ManagerCustomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/ManagerShoe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerModel/ManagerShoe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/ManagerTrademark.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerModel/ManagerTrademark.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/manager/managerAction/ManagerLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerAction/ManagerLogin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/manager/managerAction/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerAction/ManagerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/managerAction/MyFileBinary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerAction/MyFileBinary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/managerAction/MyRegex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerAction/MyRegex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/managerModel/ManagerCategory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/managerModel/ManagerCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerModel/AC/ManagerCustomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/managerModel/ManagerShoe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/managerModel/ManagerTrademark.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerModel/properties/ManagerTrademark.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Category.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AC/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Shoe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AC/Shoe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Trademark.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ACproperties/Trademark.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,19 +56,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/CodeGym/MD2/CaseMD2&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/CodeGym/MD2/Week4/BaiTapW4",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
@@ -84,6 +101,7 @@
       <workItem from="1672455400747" duration="41026000" />
       <workItem from="1672556567244" duration="36000" />
       <workItem from="1672644031653" duration="14005000" />
+      <workItem from="1672707703811" duration="59431000" />
     </task>
     <servers />
   </component>
@@ -109,14 +127,14 @@
           <option name="timeStamp" value="1" />
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/manager/managerAction/ManagerLogin.java</url>
-          <line>66</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/src/manager/managerModel/AC/ManagerProduct.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/manager/managerAction/ManagerLogin.java</url>
-          <line>82</line>
-          <option name="timeStamp" value="3" />
+          <line>57</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,23 +1,23 @@
 package main;
 
-import manager.managerModel.ManagerCategory;
-import manager.managerModel.ManagerCustomer;
-import manager.managerModel.ManagerShoe;
-import manager.managerModel.ManagerTrademark;
+import manager.managerModel.AC.ManagerCustomer;
+import manager.managerModel.AC.ManagerProduct;
+import manager.managerModel.properties.ManagerTrademark;
 import manager.managerAction.ManagerMenu;
 
 import java.util.Scanner;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
-    static ManagerCategory managerCategory = new ManagerCategory();
     static ManagerTrademark managerTrademark = new ManagerTrademark();
-    static ManagerShoe managerShoe = new ManagerShoe(managerCategory, managerTrademark);
-    static ManagerCustomer managerCustomer = new ManagerCustomer(managerShoe);
-    static ManagerMenu menu = new ManagerMenu(managerCustomer, managerShoe);
+    static ManagerCustomer managerCustomer = new ManagerCustomer(managerTrademark);
+    static ManagerMenu managerMenu = new ManagerMenu(managerCustomer, managerTrademark);
+
+    static ManagerProduct managerProduct=new ManagerProduct(managerTrademark);
 
     public static void main(String[] args) {
-        menu.begin(scanner);
+        managerMenu.begin(scanner);
+//        managerProduct.create(scanner,"Shoe");
 
     }
 

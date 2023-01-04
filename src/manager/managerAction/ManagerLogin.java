@@ -1,13 +1,12 @@
 package manager.managerAction;
 
-import manager.managerModel.ManagerCustomer;
-import model.Customer;
+import manager.managerModel.AC.ManagerCustomer;
+import model.AC.Customer;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class ManagerLogin {
-    private String admin = "admin@gmail.com";
     MyRegex myRegex = new MyRegex();
     ManagerCustomer managerCustomer;
 
@@ -45,7 +44,7 @@ public class ManagerLogin {
     public boolean isAdmin(Customer customer) {
         boolean checkAdmin = false;
         try {
-            if (customer.getEmail().toLowerCase().equals(admin)) {
+            if (customer.getRole().getName().equals("ADMIN")||customer.getRole().getName().equals("VIP-1")) {
                 checkAdmin = true;
             }
         } catch (NullPointerException e) {
@@ -63,7 +62,13 @@ public class ManagerLogin {
         for (Customer c : listCustomer) {
             if (c.getEmail().equals(login[0])) {
                 if (c.getPassWord().equals(login[1])) {
-                    outPut = "                    Welcome Back " + c.getName() + " ....!";
+                    if (isAdmin(c)) {
+                        outPut = "\n                                   Welcome Back ADMIN " + c.getName() + " ....!";
+
+                    }else {
+                        outPut = "\n                                    Welcome Back " + c.getName() + " ....!";
+
+                    }
                     System.out.println(outPut);
                     customer = c;
                     check = true;

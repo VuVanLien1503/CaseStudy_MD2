@@ -1,27 +1,30 @@
-package manager.managerModel;
+package manager.managerModel.AC;
 
 import Interface.ICrud;
+import manager.managerAction.MyFileBinary;
 import manager.managerAction.MyRegex;
-import model.Customer;
+import manager.managerModel.properties.ManagerTrademark;
+import model.AC.Customer;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ManagerCustomer implements ICrud<Customer> {
     MyRegex myRegex=new MyRegex();
+    MyFileBinary myFileBinary = new MyFileBinary();
     Scanner scanner = new Scanner(System.in);
     private int autoId;
-    ManagerShoe managerShoe;
+    ManagerTrademark managerTrademark;
     public ArrayList<Customer> listCustomer;
 
-    public ManagerCustomer(ManagerShoe managerShoe) {
+    public ManagerCustomer(ManagerTrademark managerShoe) {
         listCustomer = new ArrayList<>();
         if (listCustomer.size() > 0) {
             autoId = (listCustomer.get(listCustomer.size() - 1).getId()) + 1;
         } else {
             autoId = 1;
         }
-        this.managerShoe=managerShoe;
+        this.managerTrademark=managerShoe;
 
     }
 
@@ -31,11 +34,6 @@ public class ManagerCustomer implements ICrud<Customer> {
 
     public void setListCustomer(ArrayList<Customer> listCustomer) {
         this.listCustomer = listCustomer;
-    }
-    public void title() {
-        System.out.printf("%-5s%-10s%-10s%-10s%-10s%-10s%-10s%-15s%s",
-                "ID", "NAME", "AGE", "ADDRESS", "PHONE", "EMAIL", "PASSWORD", "CART", "HISTORY\n");
-        System.out.println("-------------------------------------------------------------------------------------------");
     }
 
     @Override
@@ -64,24 +62,30 @@ public class ManagerCustomer implements ICrud<Customer> {
         }
         return customer;
     }
+    public void title() {
+        System.out.printf("%-5s%-10s%-10s%-10s%-15s%-25s%s",
+                "ID", "NAME", "AGE", "ADDRESS", "PHONE", "EMAIL", "PASSWORD\n");
+        System.out.println("-----------------------------------------------------------------------------------");
+    }
 
     @Override
     public void display() {
         title();
-        for (Customer c :
-                listCustomer) {
-            c.display();
+        for (Customer c : listCustomer) {
+            if (!c.getRole().getName().equals("ADMIN")){
+                c.display();
+            }
         }
     }
 
     @Override
-    public Customer create(Scanner scanner) {
-        boolean check = false;
+    public Customer create(Scanner scanner,String actionName) {
+        boolean check ;
         String name;
         String email;
         String passWord;
         System.out.println("\nCreate New Customer...!\n");
-        System.out.println("name : (3-15) characters without special characters but accept \"-\";\"_\"");
+        System.out.println("name : (3-15) characters ");
         do {
             System.out.print("Enter Name : ");
             name = scanner.nextLine();
@@ -126,5 +130,9 @@ public class ManagerCustomer implements ICrud<Customer> {
     @Override
     public void add(Customer customer) {
         listCustomer.add(customer);
+        myFileBinary.outPutStream(myFileBinary.getPathCustomer(),listCustomer);
+        autoId++;
     }
+
+
 }

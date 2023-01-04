@@ -1,6 +1,8 @@
-package model;
+package model.ACproperties;
 
-public class Trademark {
+import java.io.Serializable;
+
+public class Trademark implements Serializable {
     private int id;
     private String name;
 
@@ -30,11 +32,10 @@ public class Trademark {
 
     @Override
     public String toString() {
-        return "Trademark{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return "id=" + id +
+                ", name='" + name ;
     }
+
     public void display(){
         System.out.printf("%-5s%-15s%s",
                 this.id,this.name+"\n");

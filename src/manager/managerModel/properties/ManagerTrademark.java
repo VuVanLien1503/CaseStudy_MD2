@@ -1,8 +1,11 @@
-package manager.managerModel;
+package manager.managerModel.properties;
 
 import Interface.ICrud;
+import manager.managerAction.MyFileBinary;
 import manager.managerAction.MyRegex;
-import model.Trademark;
+import model.ACproperties.ACSon.TradeMarkHandBag;
+import model.ACproperties.ACSon.TradeMarkShoe;
+import model.ACproperties.Trademark;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,6 +13,7 @@ import java.util.Scanner;
 public class ManagerTrademark implements ICrud<Trademark> {
     Scanner scanner = new Scanner(System.in);
     MyRegex myRegex=new MyRegex();
+    MyFileBinary<Trademark> myFileBinary=new MyFileBinary<>();
     private int autoId;
     private ArrayList<Trademark>listTrademark;
 
@@ -62,16 +66,25 @@ public class ManagerTrademark implements ICrud<Trademark> {
     public void display() {
         title();
         for (Trademark tradeMark : listTrademark) {
-            tradeMark.display();
+            if (tradeMark instanceof TradeMarkShoe){
+                TradeMarkShoe tradeMarkShoe= (TradeMarkShoe) tradeMark;
+                tradeMarkShoe.display();
+            }else {
+                if (tradeMark instanceof TradeMarkHandBag){
+                    TradeMarkHandBag tradeMarkHandBag= (TradeMarkHandBag) tradeMark;
+                    tradeMarkHandBag.display();
+                }
+            }
+
         }
     }
 
     @Override
-    public Trademark create(Scanner scanner) {
-        boolean check=false;
+    public Trademark create(Scanner scanner,String choiceName) {
+        boolean check;
         String name;
         System.out.println("\nCreate New TradeMark\n");
-        System.out.println("TradeMark : (3-15) characters without special characters but accept \"-\";\"_\"");
+        System.out.println("TradeMark : (3-15) characters ");
         do {
             System.out.print("Enter Name : ");
             name=scanner.nextLine();
@@ -79,17 +92,25 @@ public class ManagerTrademark implements ICrud<Trademark> {
                 check=true;
             }else {
                 System.err.println("Malformed Name");
-                System.out.println("\nTradeMark : (3-15) characters without special characters but accept \"-\";\"_\"");
+                System.out.println("\nTradeMark : (3-15) characters ");
                 check = false;
             }
         }while (!check);
         Trademark trademark;
-        trademark=new Trademark(autoId,name);
-        return trademark;
+        if (choiceName.equals("Shoe")){
+            trademark=new TradeMarkShoe(autoId,name);
+            return trademark;
+        }else {
+            trademark=new TradeMarkHandBag(autoId,name);
+            return trademark;
+        }
     }
 
     @Override
     public void add(Trademark trademark) {
         listTrademark.add(trademark);
+        myFileBinary.outPutStream(myFileBinary.getPathTradeMark(), listTrademark);
+        autoId++;
+
     }
 }

@@ -1,6 +1,7 @@
-package model;
+package model.AC;
 
-import manager.managerModel.ManagerShoe;
+
+import model.ACproperties.Role;
 
 import java.io.Serializable;
 
@@ -12,24 +13,13 @@ public class Customer implements Serializable {
     private String phone;
     private String email;
     private String passWord;
-    private ManagerShoe cart;
-    private ManagerShoe history;
+    private Role role;
+
 
     public Customer() {
     }
 
-    public Customer(int id,String name, String email, String passWord) {
-        this.id=id;
-        this.name = name;
-        this.email = email;
-        this.passWord = passWord;
-        this.age=18;
-        this.address="Hà Nội";
-        this.cart=null;
-        this.history=null;
-    }
-
-    public Customer(int id, String name, int age, String address, String phone, String email, String passWord, ManagerShoe cart, ManagerShoe history) {
+    public Customer(int id, String name, int age, String address, String phone, String email, String passWord) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -37,8 +27,34 @@ public class Customer implements Serializable {
         this.phone = phone;
         this.email = email;
         this.passWord = passWord;
-        this.cart = cart;
-        this.history = history;
+        this.role=new Role(1,"USER");
+    }
+
+    public Customer(int id, String name, String email, String passWord) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.passWord = passWord;
+        this.role=new Role(1,"USER");
+    }
+
+    public Customer(int id, String name, int age, String address, String phone, String email, String passWord, Role role) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.passWord = passWord;
+        this.role = role;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public int getId() {
@@ -97,39 +113,9 @@ public class Customer implements Serializable {
         this.passWord = passWord;
     }
 
-    public ManagerShoe getCart() {
-        return cart;
-    }
-
-    public void setCart(ManagerShoe cart) {
-        this.cart = cart;
-    }
-
-    public ManagerShoe getHistory() {
-        return history;
-    }
-
-    public void setHistory(ManagerShoe history) {
-        this.history = history;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", passWord='" + passWord + '\'' +
-                ", cart=" + cart +
-                ", history=" + history +
-                '}';
-    }
     public void display(){
-        System.out.printf("%-5s%-10s%-10s%-10s%-10s%-10s%-10s%-15s%s",
-                this.id,this.name,this.age,this.address,this.phone,this.email,this.passWord,this.cart,this.history+"\n");
+        System.out.printf("%-5s%-10s%-10s%-10s%-15s%-25s%s",
+                this.id,this.name,this.age,this.address,this.phone,this.email,this.passWord+"\n");
 
     }
 }

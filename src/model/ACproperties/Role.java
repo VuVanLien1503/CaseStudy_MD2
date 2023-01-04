@@ -1,13 +1,15 @@
-package model;
+package model.ACproperties;
 
-public class Category {
+import java.io.Serializable;
+
+public class Role implements Serializable {
     private int id;
     private String name;
 
-    public Category() {
+    public Role() {
     }
 
-    public Category(int id, String name) {
+    public Role(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -20,6 +22,7 @@ public class Category {
         this.id = id;
     }
 
+
     public String getName() {
         return name;
     }
@@ -27,17 +30,11 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
-
     @Override
     public String toString() {
-        return "Category{" +
+        return "Role{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
-    }
-
-    public void display() {
-        System.out.printf("%-5s%-15s%s",
-                this.id, this.name + "\n");
     }
 }

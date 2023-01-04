@@ -1,30 +1,40 @@
 package manager.managerAction;
 
-import manager.managerModel.ManagerCustomer;
-import manager.managerModel.ManagerShoe;
-import model.Customer;
+import Interface.Product;
+import manager.managerModel.AC.ManagerCustomer;
+import manager.managerModel.AC.ManagerProduct;
+import manager.managerModel.properties.ManagerRole;
+import manager.managerModel.properties.ManagerTrademark;
+import model.AC.Customer;
+import model.ACproperties.Role;
+import model.ACproperties.Trademark;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ManagerMenu {
-     Scanner scanner = new Scanner(System.in);
-     String patternChoice = "^[0-2]{1}$";
-     String pathCustomer = "src\\file\\customer";
-     String pathShoe = "src\\file\\shoe";
-     String pathCategory = "src\\file\\category";
-     String pathTradeMark = "src\\file\\trademark";
-    MyRegex myRegex=new MyRegex();
-    MyFileBinary myFileBinary = new MyFileBinary();
+    Scanner scanner = new Scanner(System.in);
+    String patternChoice = "^[0-2]{1}$";
+    MyRegex myRegex = new MyRegex();
     ManagerCustomer managerCustomer;
-    ManagerShoe managerShoe;
-    ManagerLogin login=new ManagerLogin(managerCustomer);
+    ManagerTrademark managerTrademark;
+    ManagerProduct managerProduct;
+    ManagerRole managerRole=new ManagerRole();
+    ManagerLogin login = new ManagerLogin(managerCustomer);
+    MyFileBinary myFileBinary=new MyFileBinary();
 
 
-    public ManagerMenu(ManagerCustomer managerCustomer, ManagerShoe managerShoe) {
-        managerCustomer.setListCustomer((ArrayList<Customer>) myFileBinary.inputStream(pathCustomer));
+    public ManagerMenu(ManagerCustomer managerCustomer, ManagerTrademark managerTrademark) {
+        managerProduct= new ManagerProduct(managerTrademark);
+        managerCustomer.setListCustomer((ArrayList<Customer>) myFileBinary.inputStream(myFileBinary.getPathCustomer()));
+        managerProduct.setListProduct((ArrayList<Product>) myFileBinary.inputStream(myFileBinary.getPathProduct()));
+        managerTrademark.setListTrademark((ArrayList<Trademark>) myFileBinary.inputStream(myFileBinary.getPathTradeMark()));
         this.managerCustomer = managerCustomer;
-        this.managerShoe = managerShoe;
+        this.managerTrademark = managerTrademark;
+        Role role=managerRole.getListRole().get(0);
+        Customer customer=new Customer(0,"Lien",33,"NamDinh","0987654321","admin@gmail.com","123456",role);
+        managerCustomer.getListCustomer().add(customer);
+
     }
 
     public ManagerCustomer getManagerCustomer() {
@@ -35,14 +45,15 @@ public class ManagerMenu {
         this.managerCustomer = managerCustomer;
     }
 
-    public ManagerShoe getManagerShoe() {
-        return managerShoe;
+    public ManagerTrademark getManagerShoe() {
+        return managerTrademark;
     }
 
-    public void setManagerShoe(ManagerShoe managerShoe) {
-        this.managerShoe = managerShoe;
+    public void setManagerShoe(ManagerTrademark managerShoe) {
+        this.managerTrademark = managerShoe;
     }
-    public  void begin(Scanner scanner) {
+
+    public void begin(Scanner scanner) {
         boolean check = false;
         int choice = -1;
         String input;
@@ -79,15 +90,15 @@ public class ManagerMenu {
                     }
                     break;
                 case 2:
-                    Customer newCustomer = managerCustomer.create(scanner);
+                    String choiceName="";
+                    Customer newCustomer = managerCustomer.create(scanner,choiceName);
                     managerCustomer.add(newCustomer);
-                    myFileBinary.outPutStream(pathCustomer, managerCustomer.listCustomer);
                     break;
             }
         } while (choice != 0);
     }
 
-    public  void menuAdmin(Scanner scanner) {
+    public void menuAdmin(Scanner scanner) {
         String pattern = "^[0-2]$";
         boolean check = false;
         String input;
@@ -96,7 +107,7 @@ public class ManagerMenu {
             do {
                 System.out.println("MENU:");
                 System.out.println("1. Action Customer");
-                System.out.println("2. Action Shoe");
+                System.out.println("2. Action Product");
                 System.out.println("------------------");
                 System.out.println("0. Back Login :");
                 System.out.println("------------------");
@@ -114,16 +125,96 @@ public class ManagerMenu {
             switch (choice) {
                 case 1:
                     System.out.println("ACTION-CUSTOMER");
+                    actionCustomer(scanner);
                     break;
                 case 2:
-                    System.out.println("ACTION-SHOE");
+                    System.out.println("ACTION-PRODUCT");
+                    actionProduct(scanner);
                     break;
             }
         } while (choice != 0);
 
     }
 
-    public static void menuCustomer() {
+    public void actionProduct(Scanner scanner) {
+        String pattern = "^[0-4]$";
+        boolean check = false;
+        String input;
+        int choice = -1;
+        do {
+            do {
+                System.out.println("MENU:");
+                System.out.println("1. Display Product");
+                System.out.println("2. Create New Product");
+                System.out.println("-------------------");
+                System.out.println("0. Back Login : ");
+                System.out.println("-------------------");
+                input = scanner.nextLine();
+                if (myRegex.regex(input, pattern)) {
+                    choice = Integer.parseInt(input);
+                    check = true;
+                } else {
+                    System.err.println("                          incorrect choice, please re-enter");
+                    System.out.println("\n");
+                }
+            } while (!check);
+
+
+            switch (choice) {
+                case 1:
+                    System.out.println("ShowListProduct:");
+                    managerProduct.display();
+                    break;
+                case 2:
+                    System.out.println("CREATE NEW PRODUCT:");
+                    String actionProduct = managerProduct.choiceProduct(scanner);
+                    Product product = managerProduct.create(scanner,actionProduct);
+                    managerProduct.add(product);
+                    break;
+            }
+        } while (choice != 0);
+
+
+    }
+    public void actionCustomer(Scanner scanner) {
+        String pattern = "^[0-4]$";
+        boolean check = false;
+        String input;
+        int choice = -1;
+        do {
+            do {
+                System.out.println("MENU:");
+                System.out.println("1. Display Customer");
+                System.out.println("2. Delete Customer");
+                System.out.println("--------------------");
+                System.out.println("0. Back Login  : ");
+                System.out.println("--------------------");
+                input = scanner.nextLine();
+                if (myRegex.regex(input, pattern)) {
+                    choice = Integer.parseInt(input);
+                    check = true;
+                } else {
+                    System.err.println("                          incorrect choice, please re-enter");
+                    System.out.println("\n");
+                }
+            } while (!check);
+
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Show List Customer:");
+                    managerCustomer.display();
+                    break;
+                case 2:
+                    System.out.println("DELETE CUSTOMER:");
+                    managerCustomer.findById(scanner);
+                    break;
+            }
+        } while (choice != 0);
+
+    }
+
+    public void menuCustomer() {
 
     }
 }

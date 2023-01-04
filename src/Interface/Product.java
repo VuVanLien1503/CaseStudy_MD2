@@ -1,20 +1,21 @@
-package model;
+package Interface;
 
-public class Shoe {
+import model.ACproperties.Trademark;
+
+import java.io.Serializable;
+
+public abstract class Product implements Serializable {
     private int id;
     private String name;
     private String type;
     private int size;
     private int quantity;
-    private Category category;
+    private String category;
     private Trademark trademark;
     private double price;
     private String describe;
 
-    public Shoe() {
-    }
-
-    public Shoe(int id, String name, String type, int size, int quantity, Category category, Trademark trademark, double price, String describe) {
+    public Product(int id, String name, String type, int size, int quantity, String category, Trademark trademark, double price, String describe) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -24,6 +25,10 @@ public class Shoe {
         this.trademark = trademark;
         this.price = price;
         this.describe = describe;
+    }
+
+    public Product() {
+
     }
 
     public int getId() {
@@ -66,14 +71,6 @@ public class Shoe {
         this.quantity = quantity;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public Trademark getTrademark() {
         return trademark;
     }
@@ -98,24 +95,13 @@ public class Shoe {
         this.describe = describe;
     }
 
-    @Override
-    public String toString() {
-        return "Shoe{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", size=" + size +
-                ", quantity=" + quantity +
-                ", category=" + category +
-                ", trademark=" + trademark +
-                ", price=" + price +
-                ", describe='" + describe + '\'' +
-                '}';
-    }
-    public void display(){
-        System.out.printf("%-5s%-10s%-10s%-10s%-10s%-10s%-10s%-15s%s",
-                this.id,this.name,this.type,this.size,this.quantity,this.category,this.trademark,this.price,this.describe+"\n");
-
+    public String getCategory() {
+        return category;
     }
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+        public abstract void display();
 }
