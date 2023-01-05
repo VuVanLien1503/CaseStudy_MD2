@@ -37,7 +37,7 @@ public class Trademark implements Serializable {
     }
 
     public void display(){
-        System.out.printf("%-5s%-15s%s",
+        System.out.printf("%-10s%s",
                 this.id,this.name+"\n");
 
     }

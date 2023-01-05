@@ -32,6 +32,11 @@ public class TradeMarkShoe extends Trademark implements Serializable {
     public void setName(String name) {
         super.setName(name);
     }
+    public void title() {
+        System.out.printf("%-10s%s",
+                "ID", "NAME\n");
+        System.out.println("-----------------");
+    }
 
     @Override
     public void display() {

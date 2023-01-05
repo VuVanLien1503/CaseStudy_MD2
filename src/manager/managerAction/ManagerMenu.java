@@ -26,9 +26,6 @@ public class ManagerMenu {
 
     public ManagerMenu(ManagerCustomer managerCustomer, ManagerTrademark managerTrademark) {
         managerProduct= new ManagerProduct(managerTrademark);
-        managerCustomer.setListCustomer((ArrayList<Customer>) myFileBinary.inputStream(myFileBinary.getPathCustomer()));
-        managerProduct.setListProduct((ArrayList<Product>) myFileBinary.inputStream(myFileBinary.getPathProduct()));
-        managerTrademark.setListTrademark((ArrayList<Trademark>) myFileBinary.inputStream(myFileBinary.getPathTradeMark()));
         this.managerCustomer = managerCustomer;
         this.managerTrademark = managerTrademark;
         Role role=managerRole.getListRole().get(0);
@@ -146,6 +143,7 @@ public class ManagerMenu {
                 System.out.println("MENU:");
                 System.out.println("1. Display Product");
                 System.out.println("2. Create New Product");
+                System.out.println("3. Edit ProductById");
                 System.out.println("-------------------");
                 System.out.println("0. Back Login : ");
                 System.out.println("-------------------");
@@ -167,10 +165,13 @@ public class ManagerMenu {
                     break;
                 case 2:
                     System.out.println("CREATE NEW PRODUCT:");
-                    String actionProduct = managerProduct.choiceProduct(scanner);
-                    Product product = managerProduct.create(scanner,actionProduct);
+                    String name = managerProduct.choiceProduct(scanner);
+                    Product product = managerProduct.create(scanner,name);
                     managerProduct.add(product);
                     break;
+                case 3:
+                    System.out.println("EDIT PRODUCT BY ID");
+                    managerProduct.findById(scanner, myRegex.getPatternNumber());
             }
         } while (choice != 0);
 
@@ -207,7 +208,8 @@ public class ManagerMenu {
                     break;
                 case 2:
                     System.out.println("DELETE CUSTOMER:");
-                    managerCustomer.findById(scanner);
+                    String patternNumber= myRegex.getPatternNumber();
+                    managerCustomer.findById(scanner,patternNumber);
                     break;
             }
         } while (choice != 0);

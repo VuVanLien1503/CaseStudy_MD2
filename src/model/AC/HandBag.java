@@ -103,7 +103,7 @@ public class HandBag extends Product {
 
     @Override
     public void display() {
-        System.out.printf("%-5s%-15s%-15s%-15s%-15s%-15s%-15s%-20s%s",
+        System.out.printf("%-5s%-15s%-20s%-5s%-5s%-15s%-20s%-20s%s",
                 this.getId(), this.getName(), this.getType(), this.getSize(), this.getQuantity(), this.getCategory(),  this.getPrice(), this.getDescribe(),this.getTrademark() + "\n");
 
     }

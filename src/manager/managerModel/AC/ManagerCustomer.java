@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ManagerCustomer implements ICrud<Customer> {
-    MyRegex myRegex=new MyRegex();
+    MyRegex myRegex = new MyRegex();
     MyFileBinary myFileBinary = new MyFileBinary();
     Scanner scanner = new Scanner(System.in);
     private int autoId;
@@ -19,12 +19,13 @@ public class ManagerCustomer implements ICrud<Customer> {
 
     public ManagerCustomer(ManagerTrademark managerShoe) {
         listCustomer = new ArrayList<>();
+        listCustomer = (ArrayList<Customer>) myFileBinary.inputStream(myFileBinary.getPathCustomer());
         if (listCustomer.size() > 0) {
             autoId = (listCustomer.get(listCustomer.size() - 1).getId()) + 1;
         } else {
             autoId = 1;
         }
-        this.managerTrademark=managerShoe;
+        this.managerTrademark = managerShoe;
 
     }
 
@@ -37,31 +38,32 @@ public class ManagerCustomer implements ICrud<Customer> {
     }
 
     @Override
-    public Customer findById(Scanner scanner) {
+    public Customer findById(Scanner scanner,String patternNumber) {
         Customer customer = null;
         int id;
-        boolean checkRegex=false;
-        boolean checkId=false;
+        boolean checkRegex = false;
+        boolean checkId = false;
         do {
             System.out.println("Enter Id : ");
-             id=Integer.parseInt(scanner.nextLine());
-            if (myRegex.regex(String.valueOf(id), myRegex.getPatternNumber())){
-                checkRegex=true;
-            }else {
+            id = Integer.parseInt(scanner.nextLine());
+            if (myRegex.regex(String.valueOf(id), patternNumber)) {
+                checkRegex = true;
+            } else {
                 System.err.println("Malformed ID");
                 System.out.println("\nId Contains Only Numbers\n");
             }
-        }while (!checkRegex);
+        } while (!checkRegex);
         for (Customer c :
                 listCustomer) {
-            if (c.getId()==id){
-                customer=c;
-                checkId=true;
+            if (c.getId() == id) {
+                customer = c;
+                checkId = true;
                 break;
             }
         }
         return customer;
     }
+
     public void title() {
         System.out.printf("%-5s%-10s%-10s%-10s%-15s%-25s%s",
                 "ID", "NAME", "AGE", "ADDRESS", "PHONE", "EMAIL", "PASSWORD\n");
@@ -72,15 +74,15 @@ public class ManagerCustomer implements ICrud<Customer> {
     public void display() {
         title();
         for (Customer c : listCustomer) {
-            if (!c.getRole().getName().equals("ADMIN")){
+            if (!c.getRole().getName().equals("ADMIN")) {
                 c.display();
             }
         }
     }
 
     @Override
-    public Customer create(Scanner scanner,String actionName) {
-        boolean check ;
+    public Customer create(Scanner scanner, String actionName) {
+        boolean check;
         String name;
         String email;
         String passWord;
@@ -89,11 +91,11 @@ public class ManagerCustomer implements ICrud<Customer> {
         do {
             System.out.print("Enter Name : ");
             name = scanner.nextLine();
-            if (myRegex.regex(name,myRegex.getPatternName())) {
+            if (myRegex.regex(name, myRegex.getPatternName())) {
                 check = true;
             } else {
                 System.err.println("Malformed Name");
-                System.out.println("\nname : (3-15) characters without special characters but accept \"-\";\"_\"");
+                System.out.println("\nname : (3-15) characters ");
                 check = false;
             }
         } while (!check);
@@ -130,8 +132,13 @@ public class ManagerCustomer implements ICrud<Customer> {
     @Override
     public void add(Customer customer) {
         listCustomer.add(customer);
-        myFileBinary.outPutStream(myFileBinary.getPathCustomer(),listCustomer);
+        myFileBinary.outPutStream(myFileBinary.getPathCustomer(), listCustomer);
         autoId++;
+    }
+
+    @Override
+    public void update(Scanner scanner) {
+
     }
 
 
