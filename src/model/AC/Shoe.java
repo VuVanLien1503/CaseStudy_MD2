@@ -104,7 +104,8 @@ public class Shoe extends Product {
 
     @Override
     public void display() {
-            System.out.printf("%-5s%-15s%-20s%-5s%-5s%-15s%-20s%-20s%s",
-                    this.getId(),this.getName(),this.getType(),this.getSize(),this.getQuantity(),this.getCategory(),this.getPrice(),this.getDescribe(),this.getTrademark()+"\n");
+        System.out.printf("%-5s%-15s%-20s%-10s%-10s%-15s%-20s%-20s%-25s%s",
+                "| "+this.getId(), "| "+this.getName(), "| "+this.getType(), "| "+this.getSize(),
+                "| "+this.getPrice(),"| "+ this.getQuantity(),"| "+ this.getCategory(),"| "+ this.getDescribe(), "| "+this.getTrademark()," |" + "\n");
     }
 }

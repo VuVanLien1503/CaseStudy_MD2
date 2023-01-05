@@ -6,19 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="e80e1736-7fa2-4796-b1b5-1011801cd118" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/ICrud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/ICrud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/file/customer" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/file/product" beforeDir="false" afterPath="$PROJECT_DIR$/note" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/file/trademark" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/file/product" beforeDir="false" afterPath="$PROJECT_DIR$/src/file/product" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/file/trademark" beforeDir="false" afterPath="$PROJECT_DIR$/src/file/trademark" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/manager/managerAction/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerAction/ManagerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/managerModel/AC/ManagerCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerModel/AC/ManagerCustomer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/manager/managerModel/AC/ManagerProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerModel/AC/ManagerProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/managerModel/properties/ManagerTrademark.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/managerModel/properties/ManagerTrademark.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/AC/HandBag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AC/HandBag.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/AC/Shoe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AC/Shoe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ACproperties/ACSon/TradeMarkShoe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ACproperties/ACSon/TradeMarkShoe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ACproperties/Trademark.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ACproperties/Trademark.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +84,7 @@
       <workItem from="1672556567244" duration="36000" />
       <workItem from="1672644031653" duration="14005000" />
       <workItem from="1672707703811" duration="59655000" />
-      <workItem from="1672880252772" duration="27169000" />
+      <workItem from="1672880252772" duration="34897000" />
     </task>
     <servers />
   </component>
@@ -120,11 +113,6 @@
           <url>file://$PROJECT_DIR$/src/manager/managerAction/ManagerLogin.java</url>
           <line>57</line>
           <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/Main.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

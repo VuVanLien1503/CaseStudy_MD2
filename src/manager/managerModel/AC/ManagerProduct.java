@@ -43,9 +43,9 @@ public class ManagerProduct implements ICrud<Product> {
     }
 
     public void title() {
-        System.out.printf("%-5s%-15s%-20s%-5s%-5s%-15s%-20s%-20s%s",
-                "ID", "NAME", "TYPE", "SIZE", "QUAN", "CATE", "PRICE", "DESCRIBE", "TRADEMARK\n");
-        System.out.println("------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("%-5s%-15s%-20s%-10s%-10s%-15s%-20s%-20s%-25s%s",
+                "| ID", "| NAME", "| TYPE", "| SIZE","| PRICE","| QUANTITY","| CATEGORY", "| DESCRIBE", "| TRADEMARK"," |\n");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
     }
 
     @Override
