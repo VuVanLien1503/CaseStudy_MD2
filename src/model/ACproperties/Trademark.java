@@ -32,8 +32,8 @@ public class Trademark implements Serializable {
 
     @Override
     public String toString() {
-        return "id=" + id +
-                ", name='" + name ;
+        return
+                " " +name ;
     }
 
     public void display(){

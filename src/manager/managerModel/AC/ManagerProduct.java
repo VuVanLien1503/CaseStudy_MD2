@@ -44,20 +44,25 @@ public class ManagerProduct implements ICrud<Product> {
 
     public void title() {
         System.out.printf("%-5s%-15s%-20s%-10s%-10s%-15s%-20s%-20s%-25s%s",
-                "| ID", "| NAME", "| TYPE", "| SIZE","| PRICE","| QUANTITY","| CATEGORY", "| DESCRIBE", "| TRADEMARK"," |\n");
+                "| ID", "| NAME", "| TYPE", "| SIZE", "| PRICE", "| QUANTITY", "| CATEGORY", "| DESCRIBE", "| TRADEMARK", " |\n");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
     }
 
     @Override
     public Product findById(Scanner scanner, String patternNumber) {
         Product product = null;
-        int id;
+        int id ;
         boolean checkRegex = false;
         do {
             System.out.println("Enter Id : ");
             id = Integer.parseInt(scanner.nextLine());
             if (myRegex.regex(String.valueOf(id), patternNumber)) {
-                checkRegex = true;
+                if (checkId(id, listProduct)) {
+                    checkRegex = true;
+                } else {
+                    System.err.println("Id Not Exist");
+                }
+
             } else {
                 System.err.println("Malformed ID");
                 System.out.println("\nId Contains Only Numbers\n");
@@ -71,6 +76,19 @@ public class ManagerProduct implements ICrud<Product> {
             }
         }
         return product;
+    }
+
+    @Override
+    public boolean checkId(int id, ArrayList<Product> list) {
+        boolean check = false;
+        for (Product p :
+                list) {
+            if (p.getId() == id) {
+                check = true;
+                break;
+            }
+        }
+        return check;
     }
 
     @Override
@@ -94,7 +112,8 @@ public class ManagerProduct implements ICrud<Product> {
         Trademark trademark = null;
         boolean check = false;
         String patternIdShoe = "";
-        int choice;
+        int number = 0;
+        String choice;
         boolean checkChoice = false;
         if (nameTradeMark.equals("Shoe")) {
             if (managerTrademark.getListTrademark().isEmpty()) {
@@ -116,22 +135,28 @@ public class ManagerProduct implements ICrud<Product> {
                     System.out.println("0.    Add  New  TradeMark:");
                     System.out.println("--------------------------");
                     System.out.println("Enter ID Choice Trademark " + patternIdShoe);
-                    choice = Integer.parseInt(scanner.nextLine());
+                    choice = scanner.nextLine();
                     if (myRegex.regex(String.valueOf(choice), patternIdShoe)) {
+                        number = Integer.parseInt(choice);
                         checkChoice = true;
                     } else {
                         System.err.println("                               Malformed ID Choice Mark");
                         System.out.println("\n                                 Please re-enter");
                     }
                 } while (!checkChoice);
-                switch (choice) {
+                switch (number) {
                     case 0:
-                        trademark = managerTrademark.create(scanner, nameTradeMark);
+                        trademark = managerTrademark.create(scanner);
                         managerTrademark.add(trademark);
                         return trademark;
                     default:
-                        trademark = managerTrademark.getListTrademark().get(choice);
-                        return trademark;
+                        for (Trademark tr :
+                                managerTrademark.getListTrademark()) {
+                            if (tr.getId() == number) {
+                                trademark = tr;
+                                return trademark;
+                            }
+                        }
                 }
             }
         } else {
@@ -155,28 +180,34 @@ public class ManagerProduct implements ICrud<Product> {
                         System.out.println("0.    Add  New  TradeMark:");
                         System.out.println("--------------------------");
                         System.out.println("Enter ID Choice Trademark " + patternIdShoe);
-                        choice = Integer.parseInt(scanner.nextLine());
+                        choice = scanner.nextLine();
                         if (myRegex.regex(String.valueOf(choice), patternIdShoe)) {
+                            number = Integer.parseInt(choice);
                             checkChoice = true;
                         } else {
                             System.err.println("                               Malformed ID Choice Mark");
                             System.out.println("\n                                 Please re-enter");
                         }
                     } while (!checkChoice);
-                    switch (choice) {
+                    switch (number) {
                         case 0:
-                            trademark = managerTrademark.create(scanner, nameTradeMark);
+                            trademark = managerTrademark.create(scanner);
                             managerTrademark.add(trademark);
                             return trademark;
                         default:
-                            trademark = managerTrademark.getListTrademark().get(choice);
-                            return trademark;
+                            for (Trademark tr :
+                                    managerTrademark.getListTrademark()) {
+                                if (tr.getId() == number) {
+                                    trademark = tr;
+                                    return trademark;
+                                }
+                            }
                     }
                 }
             }
         }
         if (check) {
-            trademark = managerTrademark.create(scanner, nameTradeMark);
+            trademark = managerTrademark.create(scanner);
             managerTrademark.add(trademark);
             return trademark;
         } else {
@@ -219,10 +250,10 @@ public class ManagerProduct implements ICrud<Product> {
         int choice;
         do {
             System.out.println("MENU CATEGORY HANDBAG:");
-            System.out.println("1. Dây Chéo");
-            System.out.println("2. Tay Sách");
-            System.out.println("3. Cầm Tay");
-            System.out.println("4. Ba Lô");
+            System.out.println("1. CrossBody");
+            System.out.println("2. Handed");
+            System.out.println("3. Portable");
+            System.out.println("4. BackPack");
             System.out.println("---------------------");
             System.out.print("Enter choice Category :");
             choice = Integer.parseInt(scanner.nextLine());
@@ -235,13 +266,13 @@ public class ManagerProduct implements ICrud<Product> {
         } while (!check);
         switch (choice) {
             case 1:
-                return "Dây Chéo";
+                return "CrossBody";
             case 2:
-                return "Tay Sách";
+                return "Handed";
             case 3:
-                return "Cầm Tay";
+                return "Portable";
             default:
-                return "Ba Lô";
+                return "BackPack";
         }
 
     }
@@ -252,10 +283,10 @@ public class ManagerProduct implements ICrud<Product> {
         int choice;
         do {
             System.out.println("MENU CATEGORY:");
-            System.out.println("1. Giày Bóng Đá");
-            System.out.println("2. Giầy Bóng Rổ");
-            System.out.println("3. Giầy Công Sở");
-            System.out.println("4. Giày  Đi  Bộ");
+            System.out.println("1. Soccer Shoes");
+            System.out.println("2. Basketball Shoes");
+            System.out.println("3. Office Shoes");
+            System.out.println("4. Walking shoes");
             System.out.println("--------------------");
             System.out.print("Enter choice Shoe :");
             choice = Integer.parseInt(scanner.nextLine());
@@ -268,13 +299,13 @@ public class ManagerProduct implements ICrud<Product> {
         } while (!check);
         switch (choice) {
             case 1:
-                return "Giày Bóng Đá";
+                return "SoccerShoes";
             case 2:
-                return "Giầy Bóng Rổ";
+                return "BasketBallShoes";
             case 3:
-                return "Giầy Công Sở";
+                return "OfficeShoes";
             default:
-                return "Giày  Đi  Bộ";
+                return "WalkingShoes";
         }
     }
 
@@ -304,7 +335,8 @@ public class ManagerProduct implements ICrud<Product> {
     }
 
     @Override
-    public Product create(Scanner scanner, String choiceName) {
+    public Product create(Scanner scanner) {
+        String choiceName= managerTrademark.choiceNameTradeMark();
         Product product;
         boolean check;
         String name;
@@ -376,13 +408,17 @@ public class ManagerProduct implements ICrud<Product> {
             category = choiceCategoryShoe(scanner);
             trademark = choiceTradeMark(scanner, choiceName);
             product = new Shoe(autoId, name, type, size, quantity, category, trademark, price, describe);
-            System.err.println("                                  Create Successful...! ");
+            System.err.println("                                              Create Successful...! \n");
+            title();
+            product.display();
             return product;
         } else {
             category = choiceCategoryHandBag(scanner);
             trademark = choiceTradeMark(scanner, choiceName);
             product = new Shoe(autoId, name, type, size, quantity, category, trademark, price, describe);
-            System.err.println("                                  Create Successful...! ");
+            System.err.println("                                                Create Successful...! \n");
+            title();
+            product.display();
             return product;
         }
     }
@@ -407,7 +443,7 @@ public class ManagerProduct implements ICrud<Product> {
         Trademark trademark = null;
         double price;
         String describe;
-        System.out.println("\nCreate New Product...!\n");
+        System.out.println("\nUpdate New Product...!\n");
         System.out.println("name : (3-15) characters ");
         do {
             System.out.println("UPDATE NAME : ");
@@ -428,7 +464,7 @@ public class ManagerProduct implements ICrud<Product> {
 
 
         do {
-            System.out.println(" UPDATE SIZE : ");
+            System.out.print("UPDATE SIZE ");
             System.out.print(product.getSize() + " UPDATE --> ");
             size = Integer.parseInt(scanner.nextLine());
             if (myRegex.regex(String.valueOf(size), myRegex.getPatternNumber())) {
@@ -444,7 +480,7 @@ public class ManagerProduct implements ICrud<Product> {
 
         check = true;
         do {
-            System.out.println(" UPDATE QUANTITY : ");
+            System.out.print("UPDATE QUANTITY  ");
             System.out.print(product.getQuantity() + " UPDATE --> ");
             quantity = Integer.parseInt(scanner.nextLine());
             if (myRegex.regex(String.valueOf(quantity), myRegex.getPatternDouble())) {
@@ -461,7 +497,7 @@ public class ManagerProduct implements ICrud<Product> {
         check = true;
 
         do {
-            System.out.println(" UPDATE PRICE : ");
+            System.out.print("UPDATE PRICE ");
             System.out.print(product.getPrice() + " UPDATE --> ");
             price = Double.parseDouble(scanner.nextLine());
             if (myRegex.regex(String.valueOf(price), myRegex.getPatternDouble())) {
@@ -476,24 +512,24 @@ public class ManagerProduct implements ICrud<Product> {
         product.setPrice(price);
 
         check = true;
-        System.out.println(" UPDATE DESCRIBE : ");
+        System.out.print("UPDATE DESCRIBE ");
         System.out.print(product.getDescribe() + " UPDATE --> ");
         describe = scanner.nextLine();
         product.setDescribe(describe);
-        String choiceName = "";
+        String choiceName;
         if (product.getTrademark().getName().equals("Shoe")) {
             choiceName = "Shoe";
             System.out.println("                          List ChoiceType");
             type = choiceType(scanner, choiceName);
-            System.out.print(product.getType() + " UPDATE --> " + type);
+            System.out.print(product.getType() + " UPDATE --> " + type + "\n");
 
             product.setType(type);
             category = choiceCategoryShoe(scanner);
-            System.out.println(product.getCategory() + " UPDATE --> " + category);
+            System.out.println(product.getCategory() + " UPDATE --> " + category + "\n");
             product.setCategory(category);
 
             trademark = choiceTradeMark(scanner, choiceName);
-            System.out.println(product.getTrademark().getName() + " UPDATE --> " + trademark.getName());
+            System.out.println(product.getTrademark().getName() + " UPDATE --> " + trademark.getName() + "\n");
             product.setTrademark(trademark);
 
             System.err.println("                                  Create Successful...! ");
@@ -502,18 +538,32 @@ public class ManagerProduct implements ICrud<Product> {
             choiceName = "HandBag";
             System.out.println("                          List ChoiceType");
             type = choiceType(scanner, choiceName);
-            System.out.print(product.getType() + " UPDATE --> " + type);
+            System.out.print(product.getType() + " UPDATE --> " + type + "\n");
 
             product.setType(type);
             category = choiceCategoryHandBag(scanner);
-            System.out.println(product.getCategory() + "  UPDATE --> " + category);
+            System.out.println(product.getCategory() + " UPDATE --> " + category + "\n");
             product.setCategory(category);
 
             trademark = choiceTradeMark(scanner, choiceName);
-            System.out.println(product.getTrademark().getName() + " UPDATE --> " + trademark.getName());
+            System.out.println(product.getTrademark().getName() + " UPDATE --> " + trademark.getName() + "\n");
             product.setTrademark(trademark);
 
             System.err.println("                                  Create Successful...! ");
+            myFileBinary.outPutStream(myFileBinary.getPathProduct(), listProduct);
         }
+    }
+
+    @Override
+    public Product delete(Scanner scanner) {
+        System.out.println("List Product");
+        display();
+        Product product= findById(scanner, myRegex.getPatternNumber());
+        System.err.println("                                                     Delete Successful \n");
+        title();
+        product.display();
+        listProduct.remove(product);
+       myFileBinary.outPutStream(myFileBinary.getPathProduct(), listProduct);
+       return product;
     }
 }

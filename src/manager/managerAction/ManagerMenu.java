@@ -19,17 +19,17 @@ public class ManagerMenu {
     ManagerCustomer managerCustomer;
     ManagerTrademark managerTrademark;
     ManagerProduct managerProduct;
-    ManagerRole managerRole=new ManagerRole();
+    ManagerRole managerRole = new ManagerRole();
     ManagerLogin login = new ManagerLogin(managerCustomer);
-    MyFileBinary myFileBinary=new MyFileBinary();
+    MyFileBinary myFileBinary = new MyFileBinary();
 
 
     public ManagerMenu(ManagerCustomer managerCustomer, ManagerTrademark managerTrademark) {
-        managerProduct= new ManagerProduct(managerTrademark);
+        managerProduct = new ManagerProduct(managerTrademark);
         this.managerCustomer = managerCustomer;
         this.managerTrademark = managerTrademark;
-        Role role=managerRole.getListRole().get(0);
-        Customer customer=new Customer(0,"Lien",33,"NamDinh","0987654321","admin@gmail.com","123456",role);
+        Role role = managerRole.getListRole().get(0);
+        Customer customer = new Customer(0, "Lien", 33, "NamDinh", "0987654321", "admin@gmail.com", "123456", role);
         managerCustomer.getListCustomer().add(customer);
 
     }
@@ -87,8 +87,8 @@ public class ManagerMenu {
                     }
                     break;
                 case 2:
-                    String choiceName="";
-                    Customer newCustomer = managerCustomer.create(scanner,choiceName);
+                    String choiceName = "";
+                    Customer newCustomer = managerCustomer.create(scanner);
                     managerCustomer.add(newCustomer);
                     break;
             }
@@ -167,15 +167,16 @@ public class ManagerMenu {
                 case 2:
                     System.out.println("CREATE NEW PRODUCT:");
                     String name = managerProduct.choiceProduct(scanner);
-                    Product product = managerProduct.create(scanner,name);
+                    Product product = managerProduct.create(scanner);
                     managerProduct.add(product);
                     break;
                 case 3:
                     System.out.println("UPDATE PRODUCT BY ID");
-                    managerProduct.findById(scanner, myRegex.getPatternNumber());
+                    managerProduct.update(scanner);
                     break;
                 case 4:
                     System.out.println("DELETE PRODUCT BY ID");
+                    managerProduct.delete(scanner);
                     break;
                 case 5:
                     System.out.println("ACTION TRADEMARK");
@@ -184,8 +185,9 @@ public class ManagerMenu {
             }
         } while (choice != 0);
     }
+
     public void actionTradeMark() {
-        String pattern = "^[0-5]$";
+        String pattern = "^[0-4]$";
         boolean check = false;
         String input;
         int choice = -1;
@@ -211,19 +213,120 @@ public class ManagerMenu {
             switch (choice) {
                 case 1:
                     System.out.println("Show List TradeMark");
+                    managerTrademark.display();
+                    choiceTradeMark();
                     break;
                 case 2:
                     System.out.println("Create New TradeMark");
+                    Trademark trademark = managerTrademark.create(scanner);
+                    managerTrademark.add(trademark);
                     break;
                 case 3:
                     System.out.println("Update TradeMark By Id");
+                    managerTrademark.update(scanner);
                     break;
                 case 4:
                     System.out.println("Delete Trade Mark By Id");
+                    deleteProductByTradeMark();
                     break;
             }
         } while (choice != 0);
     }
+
+    public void deleteProductByTradeMark() {
+        String pattern = "^[YN]$";
+        boolean check = false;
+        String confirm;
+        Trademark trademark = managerTrademark.delete(scanner);
+        boolean checkList = false;
+        for (Product p : managerProduct.getListProduct()) {
+            if (p.getTrademark().getName().equals(trademark.getName())) {
+                checkList=true;
+                break;
+            }
+        }
+        if (checkList){
+            System.out.println("List Product TradeMark Name = " + trademark.getName() + "\n");
+            managerProduct.title();
+            for (Product p : managerProduct.getListProduct()) {
+                if (p.getTrademark().getName().equals(trademark.getName())) {
+                    p.display();
+                }
+            }
+            System.out.println("                                Delete Trademark = " + trademark.getName() + " With All Products \n");
+        }else {
+            System.out.println("                                No Product Under TradeMark Name = "+ trademark.getName()+"\n");
+        }
+
+        do {
+            System.out.print("Enter Y (Agree) / N (disagree) TradeMark Name = "+trademark.getName()+" : ");
+            confirm = scanner.nextLine();
+            if (myRegex.regex(confirm, pattern)) {
+                if (confirm.equals("Y")) {
+                    ArrayList<Product> listDelete = new ArrayList<>();
+                    for (Product p : managerProduct.getListProduct()) {
+                        if (p.getTrademark().getName().equals(trademark.getName())) {
+                            listDelete.add(p);
+                        }
+                    }
+                    for (Product p :
+                            listDelete) {
+                        managerProduct.getListProduct().remove(p);
+                    }
+                    managerTrademark.getListTrademark().remove(trademark);
+                    myFileBinary.outPutStream(myFileBinary.getPathProduct(), managerProduct.getListProduct());
+                    myFileBinary.outPutStream(myFileBinary.getPathTradeMark(), managerTrademark.getListTrademark());
+                } else if (confirm.equals("N")) {
+                    System.err.println("                        Delete Failed, Back MENU :");
+                }
+                check = true;
+            } else {
+                System.err.println("                          incorrect choice, please re-enter");
+                System.out.println("\n");
+            }
+        } while (!check);
+
+    }
+
+    public void choiceTradeMark() {
+        String pattern = "^[0-2]$";
+        boolean check = false;
+        String input;
+        int choice = -1;
+        do {
+            do {
+                System.out.println("MENU:");
+                System.out.println("1. Display TradeMark Shoe");
+                System.out.println("2. Display TradeMark HandBag");
+                System.out.println("-----------------------------");
+                System.out.println("0.  Back Login  : ");
+                System.out.println("-----------------------------");
+                input = scanner.nextLine();
+                if (myRegex.regex(input, pattern)) {
+                    choice = Integer.parseInt(input);
+                    check = true;
+                } else {
+                    System.err.println("                          incorrect choice, please re-enter");
+                    System.out.println("\n");
+                }
+            } while (!check);
+            switch (choice) {
+                case 1:
+                    System.out.println("\nShow List TradeMark\n");
+                    managerTrademark.display();
+                    System.out.println("Show List TradeMark Shoe\n");
+                    managerTrademark.display("Shoe");
+                    break;
+                case 2:
+                    System.out.println("\nShow List TradeMark\n");
+                    managerTrademark.display();
+                    System.out.println("Show List TradeMarkHandBag\n");
+                    managerTrademark.display("HandBag");
+                    break;
+            }
+        } while (choice != 0);
+    }
+
     public void actionCustomer(Scanner scanner) {
         String pattern = "^[0-4]$";
         boolean check = false;
@@ -257,8 +360,8 @@ public class ManagerMenu {
                     break;
                 case 2:
                     System.out.println("DELETE CUSTOMER:");
-                    String patternNumber= myRegex.getPatternNumber();
-                    managerCustomer.findById(scanner,patternNumber);
+                    String patternNumber = myRegex.getPatternNumber();
+                    managerCustomer.findById(scanner, patternNumber);
                     break;
                 case 3:
                     System.out.println("TRANSACTION HISTORY");

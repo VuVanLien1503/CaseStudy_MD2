@@ -38,7 +38,12 @@ public class ManagerCustomer implements ICrud<Customer> {
     }
 
     @Override
-    public Customer findById(Scanner scanner,String patternNumber) {
+    public boolean checkId(int id, ArrayList<Customer> list) {
+        return false;
+    }
+
+    @Override
+    public Customer findById(Scanner scanner, String patternNumber) {
         Customer customer = null;
         int id;
         boolean checkRegex = false;
@@ -81,7 +86,7 @@ public class ManagerCustomer implements ICrud<Customer> {
     }
 
     @Override
-    public Customer create(Scanner scanner, String actionName) {
+    public Customer create(Scanner scanner) {
         boolean check;
         String name;
         String email;
@@ -141,5 +146,8 @@ public class ManagerCustomer implements ICrud<Customer> {
 
     }
 
-
+    @Override
+    public Customer delete(Scanner scanner) {
+        return null;
+    }
 }
